@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'com.github.gmazzo.buildconfig' version '4.1.2'
+    id 'com.christophecvb.touchportal.plugin-packager' version '8.3.0'
+}
+
+dependencies {
+    implementation 'com.christophecvb.touchportal:plugin-sdk:8.3.0'
+    annotationProcessor 'com.christophecvb.touchportal:plugin-sdk-annotations-processor:8.3.0'
+
+    implementation("com.hivemq:hivemq-mqtt-client:1.3.3")
+}
+
+def mainClassSimpleName = 'TouchPortalMQTTPlugin'
+def mainClassPackage = 'nl.martinaey'
+def versionName = "1.0"
+
+
+group mainClassPackage
+version 1.0
+
+tpPlugin.mainClassSimpleName = mainClassSimpleName
+
+repositories {
+    mavenCentral()
+}
+
+
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes["Main-Class"] = "nl.martinaey.TouchPortalMQTTPlugin"
+    }
+}
+
+buildConfig {
+    packageName = project.group
+
+    buildConfigField 'String', 'NAME', "\"${project.name}\""
+    buildConfigField 'String', 'VERSION_NAME', "\"${versionName}\""
+    buildConfigField 'long', 'VERSION_CODE', 1 + ''
+}
