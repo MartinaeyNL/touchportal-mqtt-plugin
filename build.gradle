@@ -13,11 +13,11 @@ dependencies {
 
 def mainClassSimpleName = 'TouchPortalMQTTPlugin'
 def mainClassPackage = 'nl.martinaey'
-def versionName = "1.0"
+def versionName = "1.1"
 
 
 group mainClassPackage
-version 1.0
+version 1.1
 
 tpPlugin.mainClassSimpleName = mainClassSimpleName
 

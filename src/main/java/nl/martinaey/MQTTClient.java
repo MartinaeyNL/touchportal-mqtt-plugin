@@ -8,7 +8,6 @@ import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class MQTTClient {
 
@@ -63,16 +62,24 @@ public class MQTTClient {
         }
     }
 
-    public CompletableFuture<?> subscribeTo(String topic, Consumer<String> callback) {
+    public CompletableFuture<?> subscribeTo(String topic, Consumer<String>... callbacks) {
         if(this.isVersion5()) {
             return ((Mqtt5AsyncClient) this.client).subscribeWith()
                     .topicFilter(topic)
-                    .callback(mqtt5Publish -> callback.accept(new String(mqtt5Publish.getPayloadAsBytes())))
+                    .callback(mqtt5Publish -> {
+                        for(Consumer<String> callback : callbacks) {
+                            callback.accept(new String(mqtt5Publish.getPayloadAsBytes()));
+                        }
+                    })
                     .send();
         } else {
             return ((Mqtt3AsyncClient) this.client).subscribeWith()
                     .topicFilter(topic)
-                    .callback(mqtt5Publish -> callback.accept(new String(mqtt5Publish.getPayloadAsBytes())))
+                    .callback(mqtt3Publish -> {
+                        for(Consumer<String> callback : callbacks) {
+                            callback.accept(new String(mqtt3Publish.getPayloadAsBytes()));
+                        }
+                    })
                     .send();
         }
     }

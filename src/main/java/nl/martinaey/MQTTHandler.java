@@ -1,5 +1,8 @@
 package nl.martinaey;
 
+import io.reactivex.Observable;
+import io.reactivex.subjects.PublishSubject;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -8,14 +11,30 @@ import java.util.logging.Logger;
 
 public class MQTTHandler {
 
+    static class UpdateMessage {
+        String topic;
+        String value;
+        public UpdateMessage(String topic, String value) {
+            this.topic = topic;
+            this.value = value;
+        }
+    }
+
     protected final Logger logger;
 
     protected Map<String, MQTTClient> mqttClients;
+
+    protected PublishSubject<UpdateMessage> valueUpdateSubject;
 
     public MQTTHandler(Logger logger) {
         logger.log(Level.INFO, "Registering MQTT Handler...");
         this.logger = logger;
         this.mqttClients = new HashMap<>();
+        this.valueUpdateSubject = PublishSubject.create();
+    }
+
+    public Observable<UpdateMessage> getValueUpdateObserver() {
+        return this.valueUpdateSubject;
     }
 
     public void createClient(String id, String host, String port, boolean useSsl) {
@@ -35,9 +54,11 @@ public class MQTTHandler {
         this.logger.log(Level.INFO, "Connecting to MQTT client '" + clientId + "'...");
         MQTTClient client = this.getMqttClientById(clientId);
         return client.connect(username, password).whenComplete((sub, throwable) -> {
-            if(throwable != null) {
+            if(sub == null || throwable != null) {
                 this.logger.log(Level.SEVERE, "Couldn't connect to '" + clientId + "'!");
-                this.logger.log(Level.SEVERE, throwable.getMessage());
+                if(throwable != null) {
+                    this.logger.log(Level.SEVERE, throwable.getMessage());
+                }
             } else {
                 this.logger.log(Level.INFO, "Successfully connected to MQTT client '" + clientId + "'!");
             }
@@ -46,7 +67,7 @@ public class MQTTHandler {
 
     public CompletableFuture<?> subscribeToTopic(String clientId, String topic) {
         MQTTClient client = this.getMqttClientById(clientId);
-        return client.subscribeTo(topic, this::onSubscribeMessage).whenComplete((sub, throwable) -> {
+        return client.subscribeTo(topic, (payload) -> this.onSubscribeMessage(topic, payload)).whenComplete((sub, throwable) -> {
             if(throwable != null) {
                 this.logger.log(Level.SEVERE, "Couldn't subscribe to topic '" + topic + "' for client '" + clientId + "'!");
                 this.logger.log(Level.SEVERE, throwable.getMessage());
@@ -65,8 +86,9 @@ public class MQTTHandler {
         return client;
     }
 
-    protected void onSubscribeMessage(String payload) {
-        this.logger.log(Level.INFO, payload);
+    protected void onSubscribeMessage(String topic, String payload) {
+        this.logger.log(Level.FINE, payload.replaceAll("\\s*[\\r\\n]+\\s*", "").trim());
+        this.valueUpdateSubject.onNext(new UpdateMessage(topic, payload));
     }
 
 

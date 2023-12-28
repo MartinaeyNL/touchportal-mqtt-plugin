@@ -1,0 +1,77 @@
+
+h	java:S109–"RAssign this magic number 2 to a well-named constant, and use the constant instead.(İÔÎ÷
+g	java:S109—"RAssign this magic number 3 to a well-named constant, and use the constant instead.(ÿÃìv
+h	java:S109˜"RAssign this magic number 4 to a well-named constant, and use the constant instead.(€à¼î
+g	java:S109™"RAssign this magic number 5 to a well-named constant, and use the constant instead.(ıÛğ
+m	java:S109š"RAssign this magic number 6 to a well-named constant, and use the constant instead.(ïˆÌ›øÿÿÿÿ
+m	java:S109›"RAssign this magic number 7 to a well-named constant, and use the constant instead.(Ùñû²ùÿÿÿÿ
+h	java:S109œ"RAssign this magic number 8 to a well-named constant, and use the constant instead.(”²¿Í
+o
+java:S2293B"YReplace the type specification in this constructor call with the diamond operator ("<>").(«·
+D
+java:S1312".Make the "LOGGER" logger private static final.(ëü¯è
+J
+java:S1066y"/Merge this if statement with the enclosing one.(Ù¼«úÿÿÿÿ
+`
+java:S5612‘"DReduce this lambda expression number of lines from 19 to at most 10.(úÅ•½ÿÿÿÿÿ
+;
+java:S2629â"$Invoke method(s) only conditionally.(š¦µÇ
+x
+java:S2629½"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ÊØÃùøÿÿÿÿ
+@
+java:S2629È"$Invoke method(s) only conditionally.(¢‰âƒıÿÿÿÿ
+4
+java:S1451"&Add or update the header of this file.
+m	java:S103—"KSplit this 167 characters long line (which is greater than 160 authorized).(ÜÖªÒûÿÿÿÿ8—ŒĞéÊ1
+u
+java:S1820"ZRefactor this class so it has no more than 20 fields, rather than the 26 it currently has.(‚§ƒ·úÿÿÿÿ
+M
+java:S1135@"2Complete the task associated to this TODO comment.(£õèÈúÿÿÿÿ
+v	java:S115e"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ï·Ñâ8²ŒĞéÊ1
+K
+java:S3985c".Remove this unused private "Categories" class.(êÎÛó8³ŒĞéÊ1
+R
+java:S2696Œ"6Make the enclosing method "static" or remove this set.(”üûóûÿÿÿÿ
+J
+java:S2211‘".Specify a type for: 'mqtt5SubAck', 'throwable'(úÅ•½ÿÿÿÿÿ
+N
+java:S1135”"2Complete the task associated to this TODO comment.(£õèÈúÿÿÿÿ
+W
+java:S1611Ÿ";Remove the parentheses around the "updateMessage" parameter(ø’¤‰úÿÿÿÿ
+H
+java:S1602Ÿ",Remove useless curly braces around statement(ø’¤‰úÿÿÿÿ
+?
+java:S2211Ÿ"#Specify a type for: 'updateMessage'(ø’¤‰úÿÿÿÿ
+I
+java:S1611¡"3Remove the parentheses around the "error" parameter(„‰z
+B
+java:S1602¡",Remove useless curly braces around statement(„‰z
+1
+java:S2211¡"Specify a type for: 'error'(„‰z
+n
+java:S3776÷"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¤Ø³ûÿÿÿÿ
+€
+java:S1541÷"dThe Cyclomatic Complexity of this method "verifySettings" is 25 which is greater than 10 authorized.(¤Ø³ûÿÿÿÿ
+a
+java:S1132’"JMove the "true" string literal on the left side of this string comparison.(ùú­¡
+b
+java:S1132’"KMove the "false" string literal on the left side of this string comparison.(ùú­¡
+f
+java:S1132—"JMove the "true" string literal on the left side of this string comparison.(ÜÖªÒûÿÿÿÿ
+g
+java:S1132—"KMove the "false" string literal on the left side of this string comparison.(ÜÖªÒûÿÿÿÿ
+v
+java:S1067œ"ZReduce the number of conditional operators (6) used in the expression (maximum allowed 3).(éÇå´ıÿÿÿÿ
+‚
+java:S1541¡"fThe Cyclomatic Complexity of this method "verifyMqttTopics" is 17 which is greater than 10 authorized.(éÏ¡úÿÿÿÿ
+N
+java:S1135£"2Complete the task associated to this TODO comment.(£õèÈúÿÿÿÿ
+q
+java:S1067­"ZReduce the number of conditional operators (7) used in the expression (maximum allowed 3).(¼È–¤
+g
+java:S3457½"KFormat specifiers or lambda should be used instead of string concatenation.(ÊØÃùøÿÿÿÿ
+I
+java:S1135¿"2Complete the task associated to this TODO comment.(£–ç
+W	java:S125Å"<This block of commented-out lines of code should be removed.(€‰ùÿÿÿÿ
+H
+java:S3457Ç"%String contains no format specifiers.(ÑúÓşÿÿÿÿ8ğÀôèÊ1
